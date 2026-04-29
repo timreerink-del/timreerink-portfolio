@@ -3,6 +3,28 @@ const year = new Date().getFullYear();
 ---
 
 <header class="hero" aria-label="Introduction">
+  <svg class="hero-filter" aria-hidden="true" focusable="false" width="0" height="0">
+    <defs>
+      <filter id="hero-distort" x="-25%" y="-40%" width="150%" height="180%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.003" numOctaves="1" seed="3" result="noise">
+          <animate attributeName="baseFrequency"
+                   values="0.006 0.0025; 0.014 0.006; 0.009 0.004; 0.012 0.005; 0.006 0.0025"
+                   dur="16s" repeatCount="indefinite" calcMode="spline"
+                   keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
+          <animate attributeName="seed"
+                   values="3; 7; 11; 5; 3"
+                   dur="16s" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="48" xChannelSelector="R" yChannelSelector="G">
+          <animate attributeName="scale"
+                   values="20; 70; 28; 56; 20"
+                   dur="16s" repeatCount="indefinite" calcMode="spline"
+                   keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
+        </feDisplacementMap>
+      </filter>
+    </defs>
+  </svg>
+
   <div class="hero-inner container">
     <div class="hero-meta mono">
       <span>Amsterdam, NL</span>
@@ -71,6 +93,19 @@ const year = new Date().getFullYear();
     font-variation-settings: "opsz" 144, "SOFT" 50;
     isolation: isolate;
     z-index: 1;
+    filter: url(#hero-distort);
+    will-change: filter;
+  }
+
+  .hero-filter {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .accent { filter: none; }
   }
 
   /* Heavy halo + chromatic split — both behind the sharp foreground */
