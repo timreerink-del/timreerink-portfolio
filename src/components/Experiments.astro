@@ -22,9 +22,10 @@ const experiments: Experiment[] = [
     tags: ['Personal', 'Dashboard'],
   },
   {
-    name: 'Designprompts.space',
+    name: 'promtdesign.space',
     summary: 'A curated space for Claude skills, prompts, agents and pipelines. A scraper pulls fresh publications weekly; I curate and post them on LinkedIn and the vault itself.',
     status: 'live',
+    url: 'https://promtdesign.space',
     accent: 'lime',
     tags: ['Prompts', 'Agents', 'Pipelines'],
   },
@@ -225,10 +226,11 @@ const statusLabel = {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 4px 9px;
+    padding: 5px 9px 4px;
     border: 1px solid var(--line);
     border-radius: 999px;
     font-size: 9px;
+    line-height: 1;
     background: color-mix(in oklab, var(--bg) 60%, transparent);
     color: var(--muted);
   }
@@ -237,6 +239,7 @@ const statusLabel = {
     height: 5px;
     border-radius: 999px;
     background: var(--muted);
+    flex-shrink: 0;
   }
   .experiment-status.live .status-dot     { background: var(--c-lime); }
   .experiment-status.beta .status-dot     { background: var(--c-amber); }
@@ -274,11 +277,12 @@ const statusLabel = {
     gap: 6px;
   }
   .experiment-tags li {
-    padding: 4px 9px;
+    padding: 5px 9px 4px;
     border: 1px solid var(--line);
     border-radius: 999px;
     color: var(--muted);
     font-size: 9px;
+    line-height: 1;
   }
 
   .experiment-cta {

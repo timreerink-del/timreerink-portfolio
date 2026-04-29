@@ -96,12 +96,13 @@ const { status = 'Currently @ Randstad Global', caseTitle } = Astro.props;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 12px;
+    padding: 7px 12px 6px;
     border: 1px solid var(--line);
     border-radius: 999px;
     background: var(--bg-2);
     color: var(--fg);
     font-size: 10px;
+    line-height: 1;
   }
 
   .status-dot {
@@ -111,6 +112,7 @@ const { status = 'Currently @ Randstad Global', caseTitle } = Astro.props;
     background: var(--c-lime);
     box-shadow: 0 0 0 0 var(--c-lime);
     animation: pulse 2.4s ease-out infinite;
+    flex-shrink: 0;
   }
 
   @keyframes pulse {

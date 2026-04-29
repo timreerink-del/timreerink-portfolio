@@ -180,11 +180,12 @@ const nextSlug = next ? next.id.replace(/\.mdx$/, '') : null;
     gap: 6px;
   }
   .case-meta-tags li {
-    padding: 4px 10px;
+    padding: 5px 10px 4px;
     border: 1px solid var(--line);
     border-radius: 999px;
     font-size: 10px;
     color: var(--muted);
+    line-height: 1;
   }
   @media (max-width: 768px) {
     .case-meta-grid { grid-template-columns: repeat(2, 1fr); }
