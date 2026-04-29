@@ -14,11 +14,11 @@ const year = new Date().getFullYear();
 
     <h1 class="hero-title serif-display">
       Designing how
-      <span class="accent italic">teams</span>
+      <span class="accent italic" data-text="teams">teams</span>
       design
-      <span class="accent italic">products</span>
+      <span class="accent italic" data-text="products">products</span>
       that
-      <span class="accent italic">ship.</span>
+      <span class="accent italic" data-text="ship.">ship.</span>
     </h1>
 
     <div class="hero-foot">
@@ -64,9 +64,65 @@ const year = new Date().getFullYear();
   }
 
   .accent {
+    position: relative;
+    display: inline-block;
     color: var(--case-color);
     font-weight: 400;
     font-variation-settings: "opsz" 144, "SOFT" 50;
+    isolation: isolate;
+    z-index: 1;
+  }
+
+  /* Heavy halo + chromatic split — both behind the sharp foreground */
+  .accent::before,
+  .accent::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    font: inherit;
+    font-style: italic;
+    font-variation-settings: inherit;
+    will-change: transform, filter, opacity;
+    z-index: -1;
+  }
+
+  /* Core out-of-focus halo in brand cobalt — drifts wide */
+  .accent::before {
+    color: var(--case-color);
+    filter: blur(24px);
+    opacity: 1;
+    animation: hero-blur-a 11s ease-in-out infinite alternate;
+  }
+
+  /* Cyan chromatic split — counter-phase, screen-blended for film vibe */
+  .accent::after {
+    color: #5cf2ff;
+    mix-blend-mode: screen;
+    filter: blur(9px);
+    opacity: 0.65;
+    animation: hero-blur-b 9s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-blur-a {
+    0%   { transform: translate(0, 0);      filter: blur(18px); opacity: 0.75; }
+    30%  { transform: translate(7px, -5px); filter: blur(32px); opacity: 1;    }
+    60%  { transform: translate(-6px, 6px); filter: blur(14px); opacity: 0.65; }
+    100% { transform: translate(4px, 2px);  filter: blur(26px); opacity: 0.9;  }
+  }
+
+  @keyframes hero-blur-b {
+    0%   { transform: translate(5px, -1px);  opacity: 0.45; filter: blur(7px);  }
+    40%  { transform: translate(-7px, 4px);  opacity: 0.85; filter: blur(11px); }
+    70%  { transform: translate(3px, -5px);  opacity: 0.35; filter: blur(8px);  }
+    100% { transform: translate(-4px, 2px);  opacity: 0.6;  filter: blur(9px);  }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .accent::before,
+    .accent::after { animation: none; }
+    .accent::before { transform: none; opacity: 0.9;  filter: blur(22px); }
+    .accent::after  { transform: none; opacity: 0.55; filter: blur(8px);  }
   }
 
   .hero-foot {
