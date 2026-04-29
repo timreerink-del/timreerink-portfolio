@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Mockup of the inherited utility-style tool — dense, transactional, monochrome">
+  <defs>
+    <linearGradient id="bgBefore" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1c20"/>
+      <stop offset="1" stop-color="#0c0c0e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bgBefore)"/>
+
+  <!-- A laptop-style window frame -->
+  <g transform="translate(120,120)">
+    <rect width="1360" height="760" rx="12" fill="#fafaf7" stroke="#26262c" stroke-width="2"/>
+    <rect width="1360" height="44" rx="12" fill="#e6e6e0"/>
+    <circle cx="22" cy="22" r="6" fill="#bbb"/>
+    <circle cx="44" cy="22" r="6" fill="#bbb"/>
+    <circle cx="66" cy="22" r="6" fill="#bbb"/>
+    <text x="680" y="28" font-family="ui-monospace, monospace" font-size="13" fill="#666" text-anchor="middle">internal-tools.randstad.dmp / shifts</text>
+
+    <!-- Sidebar -->
+    <rect x="0" y="44" width="220" height="716" fill="#f0f0eb"/>
+    <g transform="translate(24,80)" font-family="ui-monospace, monospace" font-size="13" fill="#444">
+      <text y="0">SHIFTS</text>
+      <text y="36" fill="#999">WORKERS</text>
+      <text y="72" fill="#999">CLIENTS</text>
+      <text y="108" fill="#999">REPORTS</text>
+      <text y="144" fill="#999">EXPORTS</text>
+      <text y="180" fill="#999">SETTINGS</text>
+    </g>
+
+    <!-- Header strip -->
+    <text x="260" y="100" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#222">Shifts overview · 12,438 results</text>
+    <g transform="translate(260,120)" font-family="ui-monospace, monospace" font-size="11" fill="#999">
+      <text>Filter by:</text>
+      <rect x="68" y="-12" width="80" height="22" rx="3" fill="#fff" stroke="#ccc"/>
+      <text x="78" y="3" fill="#666">Region ▾</text>
+      <rect x="158" y="-12" width="80" height="22" rx="3" fill="#fff" stroke="#ccc"/>
+      <text x="168" y="3" fill="#666">Status ▾</text>
+      <rect x="248" y="-12" width="80" height="22" rx="3" fill="#fff" stroke="#ccc"/>
+      <text x="258" y="3" fill="#666">Date ▾</text>
+    </g>
+
+    <!-- A table that screams 'utility' -->
+    <g transform="translate(260,170)" font-family="ui-monospace, monospace" font-size="11" fill="#444">
+      <rect width="1080" height="32" fill="#e8e8e2"/>
+      <text x="16" y="20" fill="#666">ID</text>
+      <text x="120" y="20" fill="#666">WORKER</text>
+      <text x="320" y="20" fill="#666">CLIENT</text>
+      <text x="540" y="20" fill="#666">START</text>
+      <text x="700" y="20" fill="#666">END</text>
+      <text x="860" y="20" fill="#666">RATE</text>
+      <text x="980" y="20" fill="#666">STATUS</text>
+
+      <!-- 14 grey rows -->
+      <g>
+        <rect x="0" y="32" width="1080" height="36" fill="#fff"/>
+        <rect x="0" y="68" width="1080" height="36" fill="#fafaf7"/>
+        <rect x="0" y="104" width="1080" height="36" fill="#fff"/>
+        <rect x="0" y="140" width="1080" height="36" fill="#fafaf7"/>
+        <rect x="0" y="176" width="1080" height="36" fill="#fff"/>
+        <rect x="0" y="212" width="1080" height="36" fill="#fafaf7"/>
+        <rect x="0" y="248" width="1080" height="36" fill="#fff"/>
+        <rect x="0" y="284" width="1080" height="36" fill="#fafaf7"/>
+        <rect x="0" y="320" width="1080" height="36" fill="#fff"/>
+        <rect x="0" y="356" width="1080" height="36" fill="#fafaf7"/>
+        <rect x="0" y="392" width="1080" height="36" fill="#fff"/>
+        <rect x="0" y="428" width="1080" height="36" fill="#fafaf7"/>
+      </g>
+      <!-- Generic row content -->
+      <g fill="#666">
+        <text x="16" y="55">SHIFT-014823</text>
+        <text x="120" y="55">A. Janssen</text>
+        <text x="320" y="55">Bol.com Waalwijk</text>
+        <text x="540" y="55">2026-04-29 08:00</text>
+        <text x="700" y="55">14:00</text>
+        <text x="860" y="55">€14.50/h</text>
+        <text x="980" y="55" fill="#999">CLAIMED</text>
+      </g>
+      <g fill="#666">
+        <text x="16" y="91">SHIFT-014824</text>
+        <text x="120" y="91">P. de Wit</text>
+        <text x="320" y="91">Albert Heijn Utrecht</text>
+        <text x="540" y="91">2026-04-29 09:00</text>
+        <text x="700" y="91">17:00</text>
+        <text x="860" y="91">€13.80/h</text>
+        <text x="980" y="91" fill="#999">UNCLAIMED</text>
+      </g>
+      <g fill="#aaa" font-size="11">
+        <text x="16" y="127">SHIFT-014825</text><text x="120" y="127">…</text><text x="320" y="127">…</text><text x="540" y="127">…</text><text x="700" y="127">…</text><text x="860" y="127">…</text><text x="980" y="127">…</text>
+        <text x="16" y="163">SHIFT-014826</text><text x="120" y="163">…</text><text x="320" y="163">…</text><text x="540" y="163">…</text><text x="700" y="163">…</text><text x="860" y="163">…</text><text x="980" y="163">…</text>
+        <text x="16" y="199">SHIFT-014827</text><text x="120" y="199">…</text><text x="320" y="199">…</text><text x="540" y="199">…</text><text x="700" y="199">…</text><text x="860" y="199">…</text><text x="980" y="199">…</text>
+        <text x="16" y="235">SHIFT-014828</text><text x="120" y="235">…</text><text x="320" y="235">…</text><text x="540" y="235">…</text><text x="700" y="235">…</text><text x="860" y="235">…</text><text x="980" y="235">…</text>
+        <text x="16" y="271">SHIFT-014829</text><text x="120" y="271">…</text><text x="320" y="271">…</text><text x="540" y="271">…</text><text x="700" y="271">…</text><text x="860" y="271">…</text><text x="980" y="271">…</text>
+        <text x="16" y="307">SHIFT-014830</text><text x="120" y="307">…</text><text x="320" y="307">…</text><text x="540" y="307">…</text><text x="700" y="307">…</text><text x="860" y="307">…</text><text x="980" y="307">…</text>
+        <text x="16" y="343">SHIFT-014831</text><text x="120" y="343">…</text><text x="320" y="343">…</text><text x="540" y="343">…</text><text x="700" y="343">…</text><text x="860" y="343">…</text><text x="980" y="343">…</text>
+        <text x="16" y="379">SHIFT-014832</text><text x="120" y="379">…</text><text x="320" y="379">…</text><text x="540" y="379">…</text><text x="700" y="379">…</text><text x="860" y="379">…</text><text x="980" y="379">…</text>
+        <text x="16" y="415">SHIFT-014833</text><text x="120" y="415">…</text><text x="320" y="415">…</text><text x="540" y="415">…</text><text x="700" y="415">…</text><text x="860" y="415">…</text><text x="980" y="415">…</text>
+        <text x="16" y="451">SHIFT-014834</text><text x="120" y="451">…</text><text x="320" y="451">…</text><text x="540" y="451">…</text><text x="700" y="451">…</text><text x="860" y="451">…</text><text x="980" y="451">…</text>
+      </g>
+    </g>
+  </g>
+
+  <text x="120" y="970" font-family="ui-monospace, monospace" font-size="14" fill="#8a8a93" letter-spacing="2">BEFORE — UTILITY TOOL · INHERITED · TRANSACTIONAL</text>
+</svg>

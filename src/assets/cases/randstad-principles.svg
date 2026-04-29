@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Seven design principles laid out as numbered cards">
+  <defs>
+    <linearGradient id="bgPrin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1f3a"/>
+      <stop offset="1" stop-color="#0c0c0e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bgPrin)"/>
+
+  <!-- Section title -->
+  <g transform="translate(80,80)" font-family="Georgia, serif">
+    <text font-family="ui-monospace, monospace" font-size="14" letter-spacing="3" fill="#5b78ff">DESIGN PRINCIPLES · 01—07</text>
+    <text y="58" font-size="46" font-weight="300" fill="#f4f1ec" font-style="italic">Seven things we agreed are true.</text>
+  </g>
+
+  <!-- Helper macro: card -->
+  <!-- Row 1: 4 cards -->
+  <g transform="translate(80,220)">
+    <!-- Card 01 -->
+    <g>
+      <rect width="340" height="240" rx="14" fill="#fafaf7"/>
+      <text x="24" y="40" font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#5b78ff">PRINCIPLE 01</text>
+      <text x="24" y="92" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#0c0c0e">Show, don't tell.</text>
+      <text x="24" y="130" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">If a state can do the job, don't write</text>
+      <text x="24" y="148" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">a paragraph about it.</text>
+      <line x1="24" y1="200" x2="316" y2="200" stroke="#e8e8e2" stroke-width="1"/>
+      <text x="24" y="220" font-family="ui-monospace, monospace" font-size="10" fill="#999">EXAMPLE — see Figma file</text>
+    </g>
+    <!-- Card 02 -->
+    <g transform="translate(360,0)">
+      <rect width="340" height="240" rx="14" fill="#fafaf7"/>
+      <text x="24" y="40" font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#2ee68a">PRINCIPLE 02</text>
+      <text x="24" y="92" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#0c0c0e">One job per screen.</text>
+      <text x="24" y="130" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">If you can't say what this screen is</text>
+      <text x="24" y="148" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">for in five words, it's not done.</text>
+      <line x1="24" y1="200" x2="316" y2="200" stroke="#e8e8e2" stroke-width="1"/>
+      <text x="24" y="220" font-family="ui-monospace, monospace" font-size="10" fill="#999">EXAMPLE — onboarding step 3</text>
+    </g>
+    <!-- Card 03 -->
+    <g transform="translate(720,0)">
+      <rect width="340" height="240" rx="14" fill="#fafaf7"/>
+      <text x="24" y="40" font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#ffb800">PRINCIPLE 03</text>
+      <text x="24" y="92" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#0c0c0e">Consumer voice.</text>
+      <text x="24" y="130" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">Sound like a useful friend, not a</text>
+      <text x="24" y="148" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">platform talking about itself.</text>
+      <line x1="24" y1="200" x2="316" y2="200" stroke="#e8e8e2" stroke-width="1"/>
+      <text x="24" y="220" font-family="ui-monospace, monospace" font-size="10" fill="#999">EXAMPLE — empty state copy</text>
+    </g>
+    <!-- Card 04 -->
+    <g transform="translate(1080,0)">
+      <rect width="340" height="240" rx="14" fill="#fafaf7"/>
+      <text x="24" y="40" font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#ff7a8a">PRINCIPLE 04</text>
+      <text x="24" y="92" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#0c0c0e">Speed is finish.</text>
+      <text x="24" y="130" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">Felt performance is part of craft.</text>
+      <text x="24" y="148" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">A slow screen is an unfinished one.</text>
+      <line x1="24" y1="200" x2="316" y2="200" stroke="#e8e8e2" stroke-width="1"/>
+      <text x="24" y="220" font-family="ui-monospace, monospace" font-size="10" fill="#999">EXAMPLE — claim shift CTA</text>
+    </g>
+  </g>
+
+  <!-- Row 2: 3 cards centered -->
+  <g transform="translate(260,500)">
+    <!-- Card 05 -->
+    <g>
+      <rect width="340" height="240" rx="14" fill="#fafaf7"/>
+      <text x="24" y="40" font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#b18cff">PRINCIPLE 05</text>
+      <text x="24" y="92" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#0c0c0e">Real content only.</text>
+      <text x="24" y="130" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">No lorem. Use real shifts, real names,</text>
+      <text x="24" y="148" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">real numbers in every component.</text>
+      <line x1="24" y1="200" x2="316" y2="200" stroke="#e8e8e2" stroke-width="1"/>
+      <text x="24" y="220" font-family="ui-monospace, monospace" font-size="10" fill="#999">EXAMPLE — component library</text>
+    </g>
+    <!-- Card 06 -->
+    <g transform="translate(360,0)">
+      <rect width="340" height="240" rx="14" fill="#fafaf7"/>
+      <text x="24" y="40" font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#5cb6ff">PRINCIPLE 06</text>
+      <text x="24" y="92" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#0c0c0e">Defaults do work.</text>
+      <text x="24" y="130" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">The right default beats the right</text>
+      <text x="24" y="148" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">setting. Pick well, then defend it.</text>
+      <line x1="24" y1="200" x2="316" y2="200" stroke="#e8e8e2" stroke-width="1"/>
+      <text x="24" y="220" font-family="ui-monospace, monospace" font-size="10" fill="#999">EXAMPLE — notification settings</text>
+    </g>
+    <!-- Card 07 -->
+    <g transform="translate(720,0)">
+      <rect width="340" height="240" rx="14" fill="#fafaf7"/>
+      <text x="24" y="40" font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#5b78ff">PRINCIPLE 07</text>
+      <text x="24" y="92" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#0c0c0e">Push back, kindly.</text>
+      <text x="24" y="130" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">Anyone can call out a principle</text>
+      <text x="24" y="148" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#666">violation. Designer, PM, or worker.</text>
+      <line x1="24" y1="200" x2="316" y2="200" stroke="#e8e8e2" stroke-width="1"/>
+      <text x="24" y="220" font-family="ui-monospace, monospace" font-size="10" fill="#999">EXAMPLE — critique rituals</text>
+    </g>
+  </g>
+
+  <text x="80" y="970" font-family="ui-monospace, monospace" font-size="14" fill="#5b78ff" letter-spacing="2">DESIGN PRINCIPLES · OPINIONATED · APPLIED · ENFORCED IN CRITIQUE</text>
+</svg>
