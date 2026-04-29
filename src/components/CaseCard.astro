@@ -1,16 +1,17 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   entry: CollectionEntry<'cases'>;
   number: number;
+  total?: number;
 }
 
-const { entry, number } = Astro.props;
+const { entry, number, total } = Astro.props;
 const { data, id } = entry;
-const { title, company, year, accent, tags, summary, hero, featured } = data;
+const { title, company, year, accent, tags, summary, featured } = data;
 const num = String(number).padStart(2, '0');
+const totalStr = total ? `/${String(total).padStart(2, '0')}` : '';
 const slug = id.replace(/\.mdx$/, '');
 ---
 
@@ -20,32 +21,22 @@ const slug = id.replace(/\.mdx$/, '');
   style={`--case-color: var(--c-${accent});`}
   aria-label={`${title} — ${company} ${year}`}
 >
-  <figure class="card-media">
-    <Image
-      src={hero}
-      alt=""
-      widths={[480, 800, 1200, 1600]}
-      sizes={featured ? '(max-width: 768px) 100vw, 100vw' : '(max-width: 768px) 100vw, 50vw'}
-      loading={number <= 2 ? 'eager' : 'lazy'}
-      class="card-img"
-    />
+  <figure class="card-art">
+    <span class="card-art-watermark serif-display" aria-hidden="true">{num}</span>
+    <header class="card-art-meta mono">
+      <span class="card-art-dot" aria-hidden="true"></span>
+      <span>{num}{totalStr}</span>
+      <span class="card-art-sep" aria-hidden="true">—</span>
+      <span class="card-art-co">{company.toUpperCase()}</span>
+      <span class="card-art-sep" aria-hidden="true">·</span>
+      <span>{year}</span>
+    </header>
+    <h3 class="card-art-title serif-display">{title}</h3>
+    <span class="card-art-bar" aria-hidden="true"></span>
     <span class="card-wash" aria-hidden="true"></span>
   </figure>
 
   <div class="card-body">
-    <header class="card-header mono">
-      <span class="card-num">{num}</span>
-      <span class="card-meta">
-        <span class="card-company">{company}</span>
-        <span class="dot">·</span>
-        <span>{year}</span>
-      </span>
-    </header>
-
-    <h3 class="card-title serif-display">
-      <span>{title}</span>
-    </h3>
-
     <p class="card-summary">{summary}</p>
 
     <footer class="card-foot">
@@ -80,26 +71,100 @@ const slug = id.replace(/\.mdx$/, '');
 
   .card:hover { border-color: var(--case-color); transform: translateY(-2px); }
   .card:hover .card-arrow { transform: rotate(-45deg); }
-  .card:hover .card-title span { color: var(--case-color); }
-  .card:hover .card-wash { opacity: 0.18; }
+  .card:hover .card-art-title { color: var(--case-color); }
+  .card:hover .card-wash { opacity: 0.06; }
+  .card:hover .card-art-watermark { transform: translate(0, 0); opacity: 0.22; }
+  .card:hover .card-art {
+    border-color: color-mix(in oklab, var(--case-color) 50%, var(--line));
+  }
 
-  .card-media {
+  .card-art {
     position: relative;
     margin: 0;
+    border: 1px solid var(--line);
     border-radius: 10px;
     overflow: hidden;
-    aspect-ratio: 16 / 10;
-    background: var(--bg);
+    aspect-ratio: 4 / 3;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    background:
+      radial-gradient(110% 80% at 0% 100%, color-mix(in oklab, var(--case-color) 22%, transparent) 0%, transparent 60%),
+      radial-gradient(70% 60% at 100% 0%, color-mix(in oklab, var(--case-color) 10%, transparent) 0%, transparent 55%),
+      var(--bg);
+    transition: border-color 240ms ease;
   }
-  .card.featured .card-media { aspect-ratio: 21 / 9; }
+  .card.featured .card-art { aspect-ratio: 21 / 9; padding: 48px; }
 
-  .card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  .card-art-watermark {
+    position: absolute;
+    right: -0.06em;
+    bottom: -0.18em;
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(180px, 28vw, 360px);
+    line-height: 0.78;
+    letter-spacing: -0.04em;
+    color: var(--case-color);
+    opacity: 0.14;
+    transform: translate(8px, 8px);
+    transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 600ms ease;
+    pointer-events: none;
+    user-select: none;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
   }
-  .card:hover .card-img { transform: scale(1.03); }
+  .card.featured .card-art-watermark { font-size: clamp(280px, 36vw, 560px); }
+
+  .card-art-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    z-index: 1;
+  }
+  .card-art-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--case-color);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--case-color) 18%, transparent);
+  }
+  .card-art-co { color: var(--case-color); font-weight: 500; }
+  .card-art-sep { color: var(--line); }
+
+  .card-art-title {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(36px, 4.4vw, 60px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+    transition: color 240ms ease;
+    text-wrap: balance;
+    z-index: 1;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  .card.featured .card-art-title {
+    font-size: clamp(56px, 7.2vw, 108px);
+    line-height: 0.94;
+    max-width: 22ch;
+  }
+
+  .card-art-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: var(--case-color);
+    z-index: 2;
+  }
 
   .card-wash {
     position: absolute;
@@ -116,39 +181,6 @@ const slug = id.replace(/\.mdx$/, '');
     flex-direction: column;
     gap: 16px;
   }
-
-  .card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--muted);
-  }
-
-  .card-num {
-    color: var(--case-color);
-    font-weight: 500;
-  }
-
-  .card-meta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .card-company { color: var(--case-color); font-weight: 500; }
-  .card-meta .dot { color: var(--line); }
-
-  .card-title {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: var(--t-h3);
-    line-height: 1.05;
-    margin: 0;
-    color: var(--fg);
-    transition: color 240ms ease;
-  }
-  .card-title span { transition: color 240ms ease; }
-
-  .card.featured .card-title { font-size: var(--t-h2); }
 
   .card-summary {
     margin: 0;
@@ -193,6 +225,10 @@ const slug = id.replace(/\.mdx$/, '');
 
   @media (max-width: 768px) {
     .card { padding: 16px; }
+    .card-art { padding: 20px; gap: 20px; }
+    .card.featured .card-art { padding: 24px; }
+    .card-art-watermark { font-size: clamp(140px, 38vw, 240px); }
+    .card.featured .card-art-watermark { font-size: clamp(180px, 50vw, 320px); }
     .card-foot { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 </style>

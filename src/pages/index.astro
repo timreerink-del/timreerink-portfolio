@@ -33,7 +33,7 @@ const companies = ['ING', 'Just Eat Takeaway', 'Wallapop', 'ICEO', 'Randstad'];
 
       <div class="work-grid">
         {cases.map((entry, i) => (
-          <CaseCard entry={entry} number={i + 1} />
+          <CaseCard entry={entry} number={i + 1} total={cases.length} />
         ))}
       </div>
     </section>
