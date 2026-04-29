@@ -1,0 +1,296 @@
+---
+interface Experiment {
+  name: string;
+  summary: string;
+  status: 'live' | 'beta' | 'building';
+  url?: string;
+  accent: 'cobalt' | 'lime' | 'blue' | 'amber' | 'pink' | 'violet';
+  tags?: string[];
+}
+
+interface Props {
+  variant?: 'page' | 'section';
+}
+const { variant = 'section' } = Astro.props;
+
+const experiments: Experiment[] = [
+  {
+    name: 'Homepage',
+    summary: '[Tim to provide — one-line description of what this is]',
+    status: 'live',
+    url: '#',
+    accent: 'cobalt',
+    tags: ['Personal', 'AI'],
+  },
+  {
+    name: 'Prompt Vault',
+    summary: '[Tim to provide — one-line description of what this is]',
+    status: 'live',
+    url: '#',
+    accent: 'lime',
+    tags: ['Prompts', 'Team'],
+  },
+  {
+    name: 'Design Manifesto',
+    summary: '[Tim to provide — one-line description of what this is]',
+    status: 'live',
+    url: '#',
+    accent: 'amber',
+    tags: ['Manifesto', 'Principles'],
+  },
+  {
+    name: 'Kintsu',
+    summary: '[Tim to provide — one-line description of what this is]',
+    status: 'beta',
+    url: '#',
+    accent: 'violet',
+    tags: ['Experiment'],
+  },
+  {
+    name: 'Vellum',
+    summary: '[Tim to provide — one-line description of what this is]',
+    status: 'beta',
+    url: '#',
+    accent: 'pink',
+    tags: ['Experiment'],
+  },
+  {
+    name: 'Scrapelaar',
+    summary: '[Tim to provide — one-line description of what this is]',
+    status: 'building',
+    url: '#',
+    accent: 'blue',
+    tags: ['Tooling'],
+  },
+];
+
+const statusLabel = {
+  live: 'Live',
+  beta: 'Beta',
+  building: 'Building',
+};
+---
+
+<section
+  id="experiments"
+  class:list={['experiments', 'container', { 'section': variant === 'section', 'page': variant === 'page' }]}
+  aria-labelledby="experiments-h"
+>
+  <header class="experiments-head">
+    <span class="mono experiments-eyebrow">AI Experiments</span>
+    <h2 id="experiments-h" class="experiments-title serif-display">
+      Tools I'm building <span class="italic">in public.</span>
+    </h2>
+    <p class="experiments-lede">
+      A scratchpad of small AI tools — some live, some half-baked, all built to test ideas
+      about how design and language models actually work together.
+    </p>
+  </header>
+
+  <ul class="experiments-grid" role="list">
+    {experiments.map((e, i) => {
+      const num = String(i + 1).padStart(2, '0');
+      const isLink = e.url && e.url !== '#';
+      const Tag = isLink ? 'a' : 'div';
+      return (
+        <li class="experiment-cell">
+          <Tag
+            href={isLink ? e.url : undefined}
+            target={isLink ? '_blank' : undefined}
+            rel={isLink ? 'noopener' : undefined}
+            class:list={['experiment', { 'is-link': isLink }]}
+            style={`--case-color: var(--c-${e.accent});`}
+          >
+            <header class="experiment-head mono">
+              <span class="experiment-num">EXP · {num}</span>
+              <span class:list={['experiment-status', e.status]}>
+                <span class="status-dot" aria-hidden="true"></span>
+                {statusLabel[e.status]}
+              </span>
+            </header>
+
+            <h3 class="experiment-name serif-display">
+              <span class="italic">{e.name}</span>
+            </h3>
+
+            <p class="experiment-summary">{e.summary}</p>
+
+            {e.tags && e.tags.length > 0 && (
+              <ul class="experiment-tags mono" role="list">
+                {e.tags.map(t => <li>{t}</li>)}
+              </ul>
+            )}
+
+            {isLink && (
+              <span class="experiment-cta mono">
+                Open ↗
+              </span>
+            )}
+          </Tag>
+        </li>
+      );
+    })}
+  </ul>
+</section>
+
+<style>
+  .experiments.section { padding-block: var(--section-y); }
+  .experiments.page {
+    padding-top: clamp(140px, 18vh, 220px);
+    padding-bottom: var(--section-y);
+  }
+
+  .experiments-head {
+    display: grid;
+    gap: 16px;
+    margin-bottom: clamp(40px, 6vw, 64px);
+    max-width: 800px;
+  }
+  .experiments-eyebrow { color: var(--muted); }
+  .experiments-title {
+    font-size: var(--t-h1);
+    font-weight: 300;
+    margin: 0;
+    color: var(--fg);
+    max-width: 14ch;
+  }
+  .experiments-title .italic {
+    color: var(--c-cobalt);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  .experiments-lede {
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 56ch;
+  }
+
+  .experiments-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .experiment-cell { display: flex; }
+
+  .experiment {
+    flex: 1;
+    display: grid;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 16px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--bg-2);
+    color: var(--fg);
+    transition: border-color 240ms ease, transform 240ms ease, background 240ms ease;
+    isolation: isolate;
+    position: relative;
+    overflow: hidden;
+  }
+  .experiment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--case-color);
+    opacity: 0;
+    transition: opacity 240ms ease;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+  }
+  .experiment.is-link:hover {
+    border-color: var(--case-color);
+    transform: translateY(-2px);
+  }
+  .experiment.is-link:hover::before { opacity: 0.18; }
+  .experiment.is-link:hover .experiment-cta { color: var(--case-color); }
+
+  .experiment-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--muted);
+  }
+  .experiment-num {
+    color: var(--case-color);
+    font-weight: 500;
+  }
+
+  .experiment-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 9px;
+    background: color-mix(in oklab, var(--bg) 60%, transparent);
+    color: var(--muted);
+  }
+  .experiment-status .status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--muted);
+  }
+  .experiment-status.live .status-dot   { background: var(--c-lime); }
+  .experiment-status.beta .status-dot   { background: var(--c-amber); }
+  .experiment-status.building .status-dot { background: var(--muted); }
+
+  .experiment-name {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--fg);
+  }
+  .experiment-name .italic {
+    font-style: italic;
+    color: var(--case-color);
+    font-variation-settings: "opsz" 96, "SOFT" 80;
+  }
+
+  .experiment-summary {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .experiment-tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .experiment-tags li {
+    padding: 4px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 9px;
+  }
+
+  .experiment-cta {
+    align-self: end;
+    color: var(--muted);
+    transition: color 200ms ease;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 1024px) {
+    .experiments-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .experiments-grid { grid-template-columns: 1fr; }
+  }
+</style>

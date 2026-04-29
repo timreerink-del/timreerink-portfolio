@@ -65,7 +65,7 @@ src/
    role: "Your role"
    order: 0                      # 1 = first card on the page
    featured: true                # full-width on the homepage grid
-   accent: "orange"              # one of: orange | lime | blue | amber | pink | violet
+   accent: "cobalt"              # one of: cobalt | lime | blue | amber | pink | violet
    tags: ["Strategy", "Design Ops"]
    summary: "One-line homepage hook. Not descriptive — punchy."
    hero: "../../assets/cases/your-case-hero.svg"
@@ -94,7 +94,7 @@ Use `draft: true` in frontmatter to hide a case in progress.
 The six per-case accents are defined as CSS custom properties in [src/styles/tokens.css](src/styles/tokens.css):
 
 ```css
---c-orange: #ff5b2e;
+--c-cobalt: #5b78ff;
 --c-lime:   #c4ff00;
 --c-blue:   #5cb6ff;
 --c-amber:  #ffb800;

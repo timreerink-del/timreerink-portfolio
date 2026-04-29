@@ -10,7 +10,7 @@ const cases = defineCollection({
     role: z.string(),
     order: z.number(),
     featured: z.boolean().default(false),
-    accent: z.enum(['orange', 'lime', 'blue', 'amber', 'pink', 'violet']),
+    accent: z.enum(['cobalt', 'lime', 'blue', 'amber', 'pink', 'violet']),
     tags: z.array(z.string()),
     summary: z.string(),
     hero: image(),

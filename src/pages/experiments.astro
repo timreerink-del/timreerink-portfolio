@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Experiments from '../components/Experiments.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="AI Experiments — Tim Reerink"
+  description="A scratchpad of small AI tools I'm building — Homepage, Prompt Vault, Design Manifesto, Kintsu, Vellum, Scrapelaar."
+  caseColor="var(--c-cobalt)"
+>
+  <Nav />
+  <main id="main">
+    <Experiments variant="page" />
+  </main>
+  <Footer />
+</Base>

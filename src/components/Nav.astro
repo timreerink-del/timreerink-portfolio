@@ -3,7 +3,7 @@ interface Props {
   status?: string;
   caseTitle?: string;
 }
-const { status = 'Currently @ Randstad DMP', caseTitle } = Astro.props;
+const { status = 'Currently @ Randstad Global', caseTitle } = Astro.props;
 ---
 
 <nav class="nav" aria-label="Primary">
@@ -12,6 +12,7 @@ const { status = 'Currently @ Randstad DMP', caseTitle } = Astro.props;
 
     <ul class="nav-links" role="list">
       <li><a href="/#work">Work</a></li>
+      <li><a href="/experiments">Experiments</a></li>
       <li><a href="/#about">About</a></li>
       <li><a href="/#contact">Contact</a></li>
     </ul>

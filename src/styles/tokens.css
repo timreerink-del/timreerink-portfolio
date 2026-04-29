@@ -6,16 +6,16 @@
   --muted: #8a8a93;
   --line: #26262c;
 
-  /* signal palette — assigned per case */
-  --c-orange: #ff5b2e;
-  --c-lime:   #c4ff00;
-  --c-blue:   #5cb6ff;
-  --c-amber:  #ffb800;
-  --c-pink:   #ff3ea5;
-  --c-violet: #b18cff;
+  /* signal palette — assigned per case, derived from each case's hero imagery */
+  --c-cobalt: #5b78ff;  /* Randstad — featured / global brand accent */
+  --c-lime:   #2ee68a;  /* ICEO neobank — neon green B-ONE */
+  --c-blue:   #5cb6ff;  /* JET groceries — Amsterdam tram + sky */
+  --c-amber:  #ffb800;  /* JET north-star — gold */
+  --c-pink:   #ff7a8a;  /* JET support — salmon background */
+  --c-violet: #b18cff;  /* ICEO design dept — purple Lego/calendar */
 
   /* default per-case colour (overridden inline) */
-  --case-color: var(--c-orange);
+  --case-color: var(--c-cobalt);
 
   /* type */
   --serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;

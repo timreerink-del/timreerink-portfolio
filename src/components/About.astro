@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import tim from '../assets/tim.jpg';
+
 const skills = [
   'User-Centred Design',
   'Strategy',
@@ -15,6 +18,15 @@ const skills = [
   <div class="about-grid">
     <aside class="about-quote">
       <span class="mono about-eyebrow">About</span>
+      <figure class="about-portrait">
+        <Image
+          src={tim}
+          alt="Portrait of Tim Reerink"
+          widths={[320, 480, 720]}
+          sizes="(max-width: 900px) 60vw, 360px"
+          loading="lazy"
+        />
+      </figure>
       <p class="quote serif-display">
         <span class="quote-mark" aria-hidden="true">“</span>
         I lead like
@@ -30,7 +42,7 @@ const skills = [
       </h2>
       <p>
         I'm a Product Design Lead currently rebuilding the design organisation
-        at <strong>Randstad Digital Marketplace</strong> around AI-augmented workflows.
+        at <strong>Randstad Global</strong> around AI-augmented workflows.
         Before this I led design for a fintech venture builder
         (<strong>ICEO</strong>, scaling a 3-person team to 9), shaped consumer
         experience at <strong>Just Eat Takeaway</strong> across 22 markets, and
@@ -64,6 +76,25 @@ const skills = [
     display: inline-block;
   }
 
+  .about-portrait {
+    margin: 0 0 32px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    aspect-ratio: 4 / 5;
+    max-width: 360px;
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--c-cobalt) 25%, var(--bg-2)),
+      var(--bg-2));
+  }
+  .about-portrait :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: contrast(1.05);
+  }
+
   .quote {
     font-family: var(--serif);
     font-style: italic;
@@ -77,12 +108,12 @@ const skills = [
   }
   .quote-mark {
     font-size: 1.6em;
-    color: var(--c-orange);
+    color: var(--c-cobalt);
     line-height: 0;
     vertical-align: -0.2em;
     margin-right: 4px;
   }
-  .quote .accent { color: var(--c-orange); font-weight: 400; }
+  .quote .accent { color: var(--c-cobalt); font-weight: 400; }
   .quote-attr { color: var(--muted); }
 
   .about-bio { display: grid; gap: 20px; }
@@ -103,7 +134,7 @@ const skills = [
   .about-bio strong {
     font-weight: 400;
     font-style: italic;
-    color: var(--c-orange);
+    color: var(--c-cobalt);
   }
   .about-bio strong em { font-style: normal; }
 
