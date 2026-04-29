@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+import Case from '../../layouts/Case.astro';
+
+export async function getStaticPaths() {
+  const cases = (await getCollection('cases', ({ data }) => !data.draft))
+    .sort((a, b) => a.data.order - b.data.order);
+
+  return cases.map((entry, i) => ({
+    params: { slug: entry.id.replace(/\.mdx$/, '') },
+    props: {
+      entry,
+      next: cases[(i + 1) % cases.length],
+    },
+  }));
+}
+
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Case entry={entry} next={next}>
+  <Content />
+</Case>

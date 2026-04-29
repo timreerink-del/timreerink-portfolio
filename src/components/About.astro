@@ -1,0 +1,130 @@
+---
+const skills = [
+  'User-Centred Design',
+  'Strategy',
+  'Design Operations',
+  'AI-Augmented Workflows',
+  'Team Leadership',
+  'UI Craft',
+  'Workshop Facilitation',
+  'Design Systems',
+];
+---
+
+<section id="about" class="about container section" aria-labelledby="about-h">
+  <div class="about-grid">
+    <aside class="about-quote">
+      <span class="mono about-eyebrow">About</span>
+      <p class="quote serif-display">
+        <span class="quote-mark" aria-hidden="true">“</span>
+        I lead like
+        <span class="italic accent">Phil Jackson</span>
+        — set the system, build the trust, then get out of the way.
+      </p>
+      <p class="quote-attr mono">— Personal operating principle</p>
+    </aside>
+
+    <div class="about-bio">
+      <h2 id="about-h" class="bio-title serif-display">
+        Fifteen years of design leadership.
+      </h2>
+      <p>
+        I'm a Product Design Lead currently rebuilding the design organisation
+        at <strong>Randstad Digital Marketplace</strong> around AI-augmented workflows.
+        Before this I led design for a fintech venture builder
+        (<strong>ICEO</strong>, scaling a 3-person team to 9), shaped consumer
+        experience at <strong>Just Eat Takeaway</strong> across 22 markets, and
+        worked across <strong>Wallapop</strong> and <strong>ING</strong> before that.
+      </p>
+      <p>
+        My pattern: walk into design teams that are stuck in execution, and rebuild
+        them around strategy, rituals, and cross-functional trust. I'm a
+        <strong>DISC profile <em>D/I</em></strong> — direct, fast, restless about
+        progress. Pragmatic over precious. I care more about the system that
+        produces the work than any single artefact.
+      </p>
+      <ul class="skill-pills mono" role="list">
+        {skills.map(s => <li>{s}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-eyebrow {
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+
+  .quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 3.2vw, 44px);
+    line-height: 1.2;
+    color: var(--fg);
+    margin: 0 0 16px;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  .quote-mark {
+    font-size: 1.6em;
+    color: var(--c-orange);
+    line-height: 0;
+    vertical-align: -0.2em;
+    margin-right: 4px;
+  }
+  .quote .accent { color: var(--c-orange); font-weight: 400; }
+  .quote-attr { color: var(--muted); }
+
+  .about-bio { display: grid; gap: 20px; }
+  .bio-title {
+    font-size: var(--t-h2);
+    font-weight: 300;
+    margin: 0 0 12px;
+    max-width: 18ch;
+    color: var(--fg);
+  }
+  .about-bio p {
+    margin: 0;
+    font-size: clamp(16px, 1.4vw, 18px);
+    line-height: 1.65;
+    color: var(--fg);
+    max-width: 60ch;
+  }
+  .about-bio strong {
+    font-weight: 400;
+    font-style: italic;
+    color: var(--c-orange);
+  }
+  .about-bio strong em { font-style: normal; }
+
+  .skill-pills {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skill-pills li {
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg-2);
+    color: var(--muted);
+    font-size: 10px;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>

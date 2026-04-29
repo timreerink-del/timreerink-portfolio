@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/fraunces/wght-italic.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '../styles/global.css';
+
+import Analytics from '@vercel/analytics/astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  caseColor?: string;
+}
+
+const {
+  title = 'Tim Reerink — Product Design Lead',
+  description = 'Product Design Lead with 15+ years across ING, Just Eat Takeaway, Wallapop, ICEO, and Randstad. Building design organisations that ship.',
+  ogImage = '/og/default.png',
+  caseColor,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogUrl = new URL(ogImage, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:url" content={canonical} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta name="theme-color" content="#0c0c0e" />
+  </head>
+  <body style={caseColor ? `--case-color: ${caseColor};` : undefined}>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <slot />
+    <Analytics />
+  </body>
+</html>

@@ -1,0 +1,115 @@
+---
+const cells = [
+  {
+    label: 'UCD',
+    title: 'User-Centred Design',
+    body: 'Research, interviews, journey mapping, empathy, and synthesis. Decisions backed by evidence, not opinion.',
+    accent: 'orange',
+  },
+  {
+    label: 'Strategy',
+    title: 'Product & Design Strategy',
+    body: 'North-star vision, opportunity framing, product narrative. Connecting design moves to business outcomes.',
+    accent: 'lime',
+  },
+  {
+    label: 'Operations',
+    title: 'Design Operations',
+    body: 'Rituals, hiring, career frameworks, and the shared scaffolding that turns a team into a discipline.',
+    accent: 'blue',
+  },
+  {
+    label: 'UI Craft',
+    title: 'UI & Systems',
+    body: 'Editorial type, motion, design tokens, accessible interfaces. The work still has to be beautifully made.',
+    accent: 'amber',
+  },
+];
+---
+
+<section class="skills container section" aria-label="Capabilities">
+  <header class="skills-head">
+    <span class="mono">Capabilities</span>
+    <h2 class="skills-title serif-display">
+      Four lanes,
+      <span class="italic" style="color: var(--c-amber);">one operator.</span>
+    </h2>
+  </header>
+  <div class="skills-grid">
+    {cells.map(c => (
+      <article class="cell" style={`--case-color: var(--c-${c.accent});`}>
+        <span class="mono cell-label">{c.label}</span>
+        <h3 class="cell-title serif-display">{c.title}</h3>
+        <p class="cell-body">{c.body}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .skills-head {
+    display: grid;
+    gap: 16px;
+    margin-bottom: clamp(40px, 6vw, 64px);
+  }
+  .skills-title {
+    font-size: var(--t-h2);
+    font-weight: 300;
+    margin: 0;
+    max-width: 16ch;
+    color: var(--fg);
+  }
+  .skills-title .italic {
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .cell {
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--bg-2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 240ms ease, background 240ms ease;
+  }
+  .cell:hover {
+    border-color: var(--case-color);
+    background: color-mix(in oklab, var(--case-color) 4%, var(--bg-2));
+  }
+
+  .cell-label {
+    color: var(--case-color);
+    font-weight: 500;
+  }
+
+  .cell-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--fg);
+  }
+
+  .cell-body {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 1024px) {
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>

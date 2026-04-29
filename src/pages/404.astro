@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="404 — Lost in design · Tim Reerink" description="The page you tried to reach doesn't exist.">
+  <Nav />
+  <main id="main" class="not-found container">
+    <span class="mono eyebrow">Error 404</span>
+    <h1 class="serif-display title">
+      That page got <span class="italic accent">redesigned</span> off the map.
+    </h1>
+    <p class="lede">Either the URL is wrong, or the case study moved during a refactor.</p>
+    <div class="actions">
+      <a href="/" class="cta">
+        <span class="mono">Back to work</span>
+        <span class="arrow-btn" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 5 5 5 5 15" />
+            <line x1="5" y1="5" x2="19" y2="19" />
+          </svg>
+        </span>
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .not-found {
+    min-height: 70vh;
+    padding-top: 200px;
+    padding-bottom: 120px;
+    display: grid;
+    align-content: center;
+    gap: 24px;
+    max-width: 800px;
+  }
+  .eyebrow { color: var(--c-orange); }
+  .title {
+    font-size: clamp(44px, 7vw, 96px);
+    font-weight: 300;
+    margin: 0;
+    color: var(--fg);
+    line-height: 1;
+    text-wrap: balance;
+  }
+  .title .accent {
+    color: var(--c-orange);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  .lede {
+    margin: 0;
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 50ch;
+  }
+  .actions { margin-top: 32px; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--fg);
+  }
+  .cta .arrow-btn { --case-color: var(--c-orange); }
+  .cta:hover .arrow-btn { transform: rotate(45deg); }
+</style>

@@ -1,0 +1,101 @@
+@import './tokens.css';
+@import './animations.css';
+
+/* --- reset --- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--serif);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  font-variation-settings: "opsz" 24, "SOFT" 50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, picture, svg, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+::selection { background: var(--case-color); color: var(--bg); }
+
+/* --- type primitives --- */
+.mono {
+  font-family: var(--mono);
+  font-size: var(--t-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.serif-display {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.italic { font-style: italic; }
+
+/* --- layout primitives --- */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.divider {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: 0;
+}
+
+/* --- accent button --- */
+.arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--case-color);
+  color: var(--bg);
+  transition: transform 240ms ease;
+  flex-shrink: 0;
+}
+
+.arrow-btn svg { width: 22px; height: 22px; }
+
+/* --- focus visibility --- */
+:focus-visible {
+  outline: 2px solid var(--case-color);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- skip link --- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 12px 16px;
+  font-family: var(--mono);
+  font-size: var(--t-meta);
+  text-transform: uppercase;
+  z-index: 1000;
+}
+.skip-link:focus { left: 16px; top: 16px; }

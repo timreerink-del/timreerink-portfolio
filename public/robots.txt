@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://timreerink.com/sitemap-index.xml

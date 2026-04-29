@@ -1,0 +1,134 @@
+---
+interface Props {
+  status?: string;
+  caseTitle?: string;
+}
+const { status = 'Currently @ Randstad DMP', caseTitle } = Astro.props;
+---
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner container">
+    <a href="/" class="logo mono" aria-label="Tim Reerink — home">TR.</a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+
+    <span class="status mono" aria-label="Current status">
+      <span class="status-dot" aria-hidden="true"></span>
+      {status}
+    </span>
+  </div>
+  {caseTitle && (
+    <div class="case-strip mono">
+      <span>{caseTitle}</span>
+    </div>
+  )}
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: color-mix(in oklab, var(--bg) 70%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding-block: 14px;
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--fg);
+  }
+
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links a {
+    position: relative;
+    padding-block: 4px;
+    color: var(--fg);
+    transition: color 200ms ease;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -2px 0;
+    height: 1px;
+    background: var(--case-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 240ms ease;
+  }
+
+  .nav-links a:hover { color: var(--case-color); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg-2);
+    color: var(--fg);
+    font-size: 10px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--c-lime);
+    box-shadow: 0 0 0 0 var(--c-lime);
+    animation: pulse 2.4s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 color-mix(in oklab, var(--c-lime) 60%, transparent); }
+    70%  { box-shadow: 0 0 0 8px color-mix(in oklab, var(--c-lime) 0%, transparent); }
+    100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--c-lime) 0%, transparent); }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-inner { grid-template-columns: auto 1fr; }
+    .status { font-size: 9px; padding: 5px 9px; }
+  }
+
+  .case-strip {
+    border-top: 1px solid var(--line);
+    padding: 8px var(--gutter);
+    color: var(--muted);
+    font-size: 10px;
+    text-align: center;
+  }
+</style>

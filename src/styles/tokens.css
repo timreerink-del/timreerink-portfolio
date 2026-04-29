@@ -1,0 +1,43 @@
+:root {
+  /* surface */
+  --bg: #0c0c0e;
+  --bg-2: #141418;
+  --fg: #f4f1ec;
+  --muted: #8a8a93;
+  --line: #26262c;
+
+  /* signal palette — assigned per case */
+  --c-orange: #ff5b2e;
+  --c-lime:   #c4ff00;
+  --c-blue:   #5cb6ff;
+  --c-amber:  #ffb800;
+  --c-pink:   #ff3ea5;
+  --c-violet: #b18cff;
+
+  /* default per-case colour (overridden inline) */
+  --case-color: var(--c-orange);
+
+  /* type */
+  --serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* scale (fluid) */
+  --t-display: clamp(64px, 13vw, 220px);
+  --t-h1:      clamp(40px, 5vw, 80px);
+  --t-h2:      clamp(32px, 4vw, 56px);
+  --t-h3:      clamp(24px, 2.5vw, 36px);
+  --t-body:    17px;
+  --t-meta:    11px;
+
+  /* space */
+  --gutter: 32px;
+  --section-y: 120px;
+  --max-w: 1440px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 20px;
+    --section-y: 80px;
+  }
+}

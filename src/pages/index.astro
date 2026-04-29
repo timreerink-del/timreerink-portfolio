@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import CaseCard from '../components/CaseCard.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+const cases = (await getCollection('cases', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const companies = ['ING', 'Just Eat Takeaway', 'Wallapop', 'ICEO', 'Randstad'];
+---
+
+<Base>
+  <Nav />
+  <main id="main">
+    <Hero />
+    <Marquee items={companies} />
+
+    <section id="work" class="work container section" aria-labelledby="work-h">
+      <header class="work-head">
+        <span class="mono">Selected Work · 2020 — 2026</span>
+        <h2 id="work-h" class="serif-display work-title">
+          Six chapters in <span class="italic">design leadership.</span>
+        </h2>
+      </header>
+
+      <div class="work-grid">
+        {cases.map((entry, i) => (
+          <CaseCard entry={entry} number={i + 1} />
+        ))}
+      </div>
+    </section>
+
+    <hr class="divider" />
+    <About />
+
+    <hr class="divider" />
+    <Skills />
+
+    <hr class="divider" />
+    <Contact />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .work-head {
+    display: grid;
+    gap: 24px;
+    margin-bottom: clamp(40px, 6vw, 80px);
+  }
+
+  .work-title {
+    font-size: var(--t-h1);
+    margin: 0;
+    max-width: 18ch;
+    color: var(--fg);
+  }
+
+  .work-title .italic {
+    color: var(--c-orange);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .work-grid { grid-template-columns: 1fr; }
+  }
+</style>

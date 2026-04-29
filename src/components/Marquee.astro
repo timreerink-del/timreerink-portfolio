@@ -1,0 +1,73 @@
+---
+interface Props {
+  items: string[];
+  speed?: number; // seconds per loop
+  separator?: string;
+}
+const { items, speed = 40, separator = '✦' } = Astro.props;
+const sequence = [...items, ...items];
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" style={`animation-duration: ${speed}s;`}>
+    {sequence.map((item, i) => (
+      <span class="marquee-item">
+        <span class="marquee-word italic">{item}</span>
+        <span class="marquee-sep">{separator}</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<span class="visually-hidden">Companies: {items.join(', ')}</span>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    border-block: 1px solid var(--line);
+    padding-block: clamp(24px, 4vw, 44px);
+    background: var(--bg);
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(28px, 4vw, 56px);
+    padding-right: clamp(28px, 4vw, 56px);
+  }
+
+  .marquee-word {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    font-size: clamp(48px, 8vw, 120px);
+    color: var(--fg);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .marquee-sep {
+    font-family: var(--mono);
+    color: var(--case-color);
+    font-size: clamp(20px, 3vw, 32px);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

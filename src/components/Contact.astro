@@ -1,0 +1,95 @@
+---
+const email = 'timreerink@proton.me';
+const linkedin = 'https://www.linkedin.com/in/timreerink/';
+---
+
+<section id="contact" class="contact container section" aria-labelledby="contact-h">
+  <span class="mono contact-eyebrow">Contact</span>
+  <h2 id="contact-h" class="contact-title serif-display">
+    Let's talk about
+    <span class="italic accent">what's next</span>
+    for your design org.
+  </h2>
+
+  <div class="contact-actions">
+    <a class="contact-cta" href={`mailto:${email}`} aria-label={`Email Tim at ${email}`}>
+      <span class="cta-label mono">Email</span>
+      <span class="cta-value">{email}</span>
+      <span class="arrow-btn cta-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="19" x2="19" y2="5" />
+          <polyline points="9 5 19 5 19 15" />
+        </svg>
+      </span>
+    </a>
+
+    <a class="contact-link mono" href={linkedin} target="_blank" rel="noopener">
+      LinkedIn / Resume ↗
+    </a>
+  </div>
+</section>
+
+<style>
+  .contact { text-align: left; }
+  .contact-eyebrow { color: var(--muted); display: inline-block; margin-bottom: 24px; }
+
+  .contact-title {
+    font-size: clamp(40px, 6vw, 96px);
+    font-weight: 300;
+    margin: 0 0 56px;
+    line-height: 1;
+    color: var(--fg);
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+  .contact-title .accent {
+    color: var(--c-orange);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .contact-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .contact-cta {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    gap: 16px;
+    color: var(--fg);
+    transition: color 200ms ease;
+  }
+  .contact-cta:hover { color: var(--c-orange); }
+  .contact-cta:hover .cta-arrow { transform: rotate(-45deg); }
+
+  .cta-label { color: var(--muted); }
+  .cta-value {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(22px, 2.4vw, 32px);
+  }
+  .cta-arrow {
+    --case-color: var(--c-orange);
+  }
+
+  .contact-link {
+    color: var(--muted);
+    transition: color 200ms ease;
+  }
+  .contact-link:hover { color: var(--c-orange); }
+
+  @media (max-width: 540px) {
+    .contact-cta { grid-template-columns: auto 1fr; row-gap: 12px; }
+    .cta-arrow { grid-row: 1 / 3; grid-column: 2; justify-self: end; }
+    .cta-label { grid-column: 1; }
+    .cta-value { grid-column: 1; }
+  }
+</style>
