@@ -21,6 +21,11 @@ const cases = defineCollection({
     duration: z.string(),
     team: z.string().optional(),
     draft: z.boolean().default(false),
+    gallery: z.array(z.object({
+      src: image(),
+      alt: z.string(),
+      caption: z.string().optional(),
+    })).optional(),
   }),
 });
 

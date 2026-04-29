@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import Base from './Base.astro';
 import Nav from '../components/Nav.astro';
 import Metrics from '../components/Metrics.astro';
+import CaseGallery from '../components/CaseGallery.astro';
 
 interface Props {
   entry: CollectionEntry<'cases'>;
@@ -72,6 +73,10 @@ const nextSlug = next ? next.id.replace(/\.mdx$/, '') : null;
     <div class="case-body container">
       <slot />
     </div>
+
+    {data.gallery && data.gallery.length > 0 && (
+      <CaseGallery items={data.gallery} />
+    )}
 
     {metrics && metrics.length > 0 && <Metrics metrics={metrics} />}
 
