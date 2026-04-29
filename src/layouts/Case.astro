@@ -75,7 +75,11 @@ const nextSlug = next ? next.id.replace(/\.mdx$/, '') : null;
     </div>
 
     {data.gallery && data.gallery.length > 0 && (
-      <CaseGallery items={data.gallery} />
+      <CaseGallery
+        items={data.gallery}
+        label={data.galleryLabel}
+        title={data.galleryTitle}
+      />
     )}
 
     {metrics && metrics.length > 0 && <Metrics metrics={metrics} />}

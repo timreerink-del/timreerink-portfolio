@@ -26,6 +26,8 @@ const cases = defineCollection({
       alt: z.string(),
       caption: z.string().optional(),
     })).optional(),
+    galleryLabel: z.string().optional(),
+    galleryTitle: z.string().optional(),
   }),
 });
 
