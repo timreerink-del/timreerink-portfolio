@@ -1,18 +1,28 @@
 ---
 const year = new Date().getFullYear();
+
+// Tim's working trail — left to right, oldest to current.
+// Tim: edit `years` to whatever you want surfaced on hover.
+const cities = [
+  { name: 'Barcelona', years: '[Tim — year range]', tilt: -3,  accent: 'pink' },
+  { name: 'Oslo',      years: '[Tim — year range]', tilt:  4,  accent: 'lime' },
+  { name: 'Berlin',    years: '[Tim — year range]', tilt: -2,  accent: 'amber' },
+  { name: 'Amsterdam', years: 'now',                 tilt:  3, accent: 'cobalt', current: true },
+];
 ---
 
 <footer class="foot">
   <div class="foot-inner container">
     <div class="foot-col">
-      <span class="logo mono">TR.</span>
-      <span class="mono foot-byline">© {year} Tim Reerink · Amsterdam</span>
+      <span class="logo mono" aria-label="Tim Reerink">TR.</span>
+      <span class="mono foot-byline">© {year} Tim Reerink</span>
     </div>
 
     <div class="foot-col foot-links mono" aria-label="Footer navigation">
       <a href="/#work">Work</a>
       <a href="/experiments">Experiments</a>
       <a href="/#about">About</a>
+      <a href="/#awards">Awards</a>
       <a href="/#contact">Contact</a>
       <a href="https://www.linkedin.com/in/timreerink/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
@@ -23,12 +33,29 @@ const year = new Date().getFullYear();
       <span>Astro · Vanilla CSS · Vercel</span>
     </div>
   </div>
+
+  <div class="passport container" aria-label="Cities I've worked in">
+    <span class="passport-label mono">Worked in</span>
+    <ul class="passport-stamps" role="list">
+      {cities.map((c) => (
+        <li
+          class:list={['stamp', { 'is-current': c.current }]}
+          style={`--tilt: ${c.tilt}deg; --case-color: var(--c-${c.accent});`}
+        >
+          <span class="stamp-inner">
+            <span class="stamp-name mono">{c.name}</span>
+            <span class="stamp-years mono">{c.years}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
 </footer>
 
 <style>
   .foot {
     border-top: 1px solid var(--line);
-    padding-block: 40px;
+    padding-block: 40px 32px;
     background: var(--bg);
   }
 
@@ -48,7 +75,7 @@ const year = new Date().getFullYear();
   }
 
   .foot-col:nth-child(2) { justify-content: center; flex-wrap: wrap; }
-  .foot-col:last-child { justify-content: flex-end; }
+  .foot-col:nth-child(3) { justify-content: flex-end; }
 
   .foot-col .dot { color: var(--line); }
 
@@ -65,10 +92,81 @@ const year = new Date().getFullYear();
   }
   .foot-links a:hover { color: var(--fg); }
 
+  /* --- passport stamps --- */
+  .passport {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px dashed var(--line);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(12px, 2vw, 28px);
+  }
+  .passport-label {
+    color: var(--muted);
+    margin-right: 8px;
+  }
+  .passport-stamps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(10px, 1.6vw, 24px);
+    align-items: center;
+  }
+
+  .stamp {
+    transform: rotate(var(--tilt));
+    transition: transform 360ms cubic-bezier(.5,1.6,.4,1), filter 240ms ease;
+    transform-origin: center;
+  }
+  .stamp:hover {
+    transform: rotate(0deg) scale(1.06);
+    filter: none;
+  }
+
+  .stamp-inner {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 14px;
+    border: 2px solid var(--case-color);
+    border-radius: 4px;
+    color: var(--case-color);
+    background: color-mix(in oklab, var(--case-color) 5%, transparent);
+    /* Faded "stamped" feel */
+    box-shadow:
+      inset 0 0 0 1px color-mix(in oklab, var(--case-color) 30%, transparent),
+      inset 0 0 12px color-mix(in oklab, var(--bg) 80%, transparent);
+    opacity: 0.75;
+    transition: opacity 240ms ease;
+  }
+  .stamp.is-current .stamp-inner { opacity: 1; }
+  .stamp:hover .stamp-inner { opacity: 1; }
+
+  .stamp-name {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+  }
+  .stamp-years {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+  }
+
   @media (max-width: 768px) {
     .foot-inner { grid-template-columns: 1fr; gap: 16px; }
-    .foot-col, .foot-col:nth-child(2), .foot-col:last-child {
+    .foot-col, .foot-col:nth-child(2), .foot-col:nth-child(3) {
       justify-content: flex-start;
     }
+    .passport { margin-top: 32px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stamp { transform: none; transition: none; }
+    .stamp:hover { transform: scale(1.04); }
   }
 </style>

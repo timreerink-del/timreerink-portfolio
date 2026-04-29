@@ -54,7 +54,40 @@ const ogUrl = new URL(ogImage, Astro.site).toString();
   </head>
   <body style={caseColor ? `--case-color: ${caseColor};` : undefined}>
     <a href="#main" class="skip-link">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <slot />
     <Analytics />
+    <script is:inline>
+      // Console signature for fellow snoopers.
+      (() => {
+        try {
+          const big = 'color:#5b78ff;font:600 14px/1.2 ui-monospace,monospace;letter-spacing:0.1em';
+          const dim = 'color:#8a8a93;font:400 12px/1.4 ui-monospace,monospace';
+          console.log('%cTR.%c — built without Framer.\nAstro · vanilla CSS · Vercel.\nIf you read source for fun, we should talk: timreerink@proton.me', big, dim);
+        } catch (_) {}
+
+        // Click TR. logo to cycle wordmarks.
+        const logo = document.querySelector('.logo');
+        if (logo) {
+          const marks = ['TR.', 'TR/26', 'T·R', 'Tim.', 'TR. ✦'];
+          let i = 0;
+          const original = logo.textContent;
+          logo.addEventListener('click', (e) => {
+            // Only intercept if the user clicks the logo *while on the home page*,
+            // otherwise let it act as a normal home link.
+            if (location.pathname === '/' && !e.metaKey && !e.ctrlKey) {
+              e.preventDefault();
+              i = (i + 1) % marks.length;
+              logo.textContent = marks[i];
+              logo.style.transition = 'transform 200ms cubic-bezier(.5,1.6,.5,1)';
+              logo.style.transform = 'scale(0.92) rotate(-4deg)';
+              setTimeout(() => { logo.style.transform = ''; }, 220);
+            }
+          });
+          // Restore on unload so back-navigations don't see a stale wordmark.
+          window.addEventListener('beforeunload', () => { logo.textContent = original; });
+        }
+      })();
+    </script>
   </body>
 </html>

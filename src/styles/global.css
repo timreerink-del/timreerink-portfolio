@@ -85,6 +85,36 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border-radius: 2px;
 }
 
+/* --- scroll progress (CSS-only, scroll-driven animation) --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--case-color, var(--c-cobalt));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 100;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+@supports (animation-timeline: scroll()) {
+  @keyframes scroll-grow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  .scroll-progress {
+    animation: scroll-grow linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+}
+
 /* --- skip link --- */
 .skip-link {
   position: absolute;

@@ -1,0 +1,182 @@
+---
+interface Award {
+  year: number;
+  title: string;
+  organisation: string;
+  category?: string;
+  url?: string;
+  accent?: 'cobalt' | 'lime' | 'blue' | 'amber' | 'pink' | 'violet';
+}
+
+// Newest first.
+const awards: Award[] = [
+  {
+    year: 2023,
+    title: 'Next Unicorn Award for Marketplaces',
+    organisation: 'Wallapop',
+    category: 'Aug 2023',
+    accent: 'cobalt',
+  },
+  {
+    year: 2019,
+    title: 'Yahoo Sports Technology Awards',
+    organisation: 'SciSports',
+    category: 'January 2019',
+    accent: 'lime',
+  },
+  {
+    year: 2015,
+    title: "#10 on Banks' Social Media Expert List",
+    organisation: 'Alianzo · ING Nederland',
+    category: 'May 2015',
+    accent: 'amber',
+  },
+  {
+    year: 2014,
+    title: 'Website van het Jaar — Financial',
+    organisation: 'ING Bank',
+    category: 'November 2014',
+    accent: 'violet',
+  },
+  {
+    year: 2014,
+    title: 'Social Media Monitor 7 — Winner',
+    organisation: 'Social Embassy · ING Nederland',
+    category: 'October 2014',
+    accent: 'pink',
+  },
+];
+---
+
+<section id="awards" class="awards container section" aria-labelledby="awards-h">
+  <header class="awards-head">
+    <span class="mono awards-eyebrow">Recognition</span>
+    <h2 id="awards-h" class="awards-title serif-display">
+      A few <span class="italic">trophies</span> on the shelf.
+    </h2>
+  </header>
+
+  <ol class="awards-list" role="list">
+    {awards.map((a) => {
+      const Tag = a.url ? 'a' : 'div';
+      return (
+        <li class="award-row" style={`--case-color: var(--c-${a.accent ?? 'cobalt'});`}>
+          <Tag
+            href={a.url}
+            target={a.url ? '_blank' : undefined}
+            rel={a.url ? 'noopener' : undefined}
+            class:list={['award-inner', { 'is-link': !!a.url }]}
+          >
+            <span class="award-year mono">{a.year}</span>
+            <span class="award-title serif-display">
+              <span class="italic">{a.title}</span>
+            </span>
+            <span class="award-org mono">
+              {a.organisation}{a.category ? ` · ${a.category}` : ''}
+            </span>
+            {a.url && (
+              <span class="award-arrow" aria-hidden="true">↗</span>
+            )}
+          </Tag>
+        </li>
+      );
+    })}
+  </ol>
+</section>
+
+<style>
+  .awards-head {
+    display: grid;
+    gap: 16px;
+    margin-bottom: clamp(40px, 6vw, 64px);
+  }
+  .awards-eyebrow { color: var(--muted); }
+  .awards-title {
+    font-size: var(--t-h2);
+    font-weight: 300;
+    margin: 0;
+    color: var(--fg);
+    max-width: 18ch;
+  }
+  .awards-title .italic {
+    color: var(--c-amber);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .awards-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .award-row {
+    border-bottom: 1px solid var(--line);
+    transition: background 240ms ease;
+  }
+  .award-row:hover {
+    background: color-mix(in oklab, var(--case-color) 5%, transparent);
+  }
+
+  .award-inner {
+    display: grid;
+    grid-template-columns: 80px 1fr auto auto;
+    gap: 32px;
+    align-items: baseline;
+    padding-block: 24px;
+    color: var(--fg);
+    transition: transform 240ms ease;
+  }
+  .award-inner.is-link:hover { transform: translateX(6px); }
+
+  .award-year {
+    color: var(--case-color);
+    font-weight: 500;
+  }
+
+  .award-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(20px, 2.4vw, 32px);
+    line-height: 1.1;
+  }
+  .award-title .italic {
+    font-style: italic;
+    font-variation-settings: "opsz" 96, "SOFT" 80;
+    color: var(--fg);
+    transition: color 240ms ease;
+  }
+  .award-row:hover .award-title .italic { color: var(--case-color); }
+
+  .award-org {
+    color: var(--muted);
+    text-align: right;
+    max-width: 28ch;
+  }
+
+  .award-arrow {
+    color: var(--case-color);
+    font-size: 20px;
+    transition: transform 200ms ease;
+  }
+  .award-inner.is-link:hover .award-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  @media (max-width: 768px) {
+    .award-inner {
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        "year arrow"
+        "title title"
+        "org org";
+      gap: 8px 16px;
+      padding-block: 20px;
+    }
+    .award-year { grid-area: year; }
+    .award-title { grid-area: title; }
+    .award-org { grid-area: org; text-align: left; max-width: none; }
+    .award-arrow { grid-area: arrow; justify-self: end; }
+  }
+</style>

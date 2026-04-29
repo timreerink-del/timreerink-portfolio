@@ -9,7 +9,6 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   adapter: vercel({
     webAnalytics: { enabled: true },
-    imageService: true,
   }),
   output: 'static',
   image: {
