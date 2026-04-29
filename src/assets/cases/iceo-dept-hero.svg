@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 800" preserveAspectRatio="xMidYMid slice" font-family="ui-monospace, 'JetBrains Mono', SFMono-Regular, Menlo, monospace">
+  <defs>
+    <radialGradient id="washR" cx="100%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#b18cff" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#b18cff" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#b18cff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="washL" cx="0%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b18cff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#b18cff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="glowSoft" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <rect width="2400" height="800" fill="#0c0c0e"/>
+  <rect width="2400" height="800" fill="url(#washL)"/>
+  <rect width="2400" height="800" fill="url(#washR)"/>
+
+  <!-- subtle dashed midline -->
+  <line x1="1200" y1="120" x2="1200" y2="540" stroke="#26262c" stroke-width="1" stroke-dasharray="2 8"/>
+
+  <!-- top eyebrow labels (safe x ∈ [340, 2060]) -->
+  <g font-size="13" letter-spacing="3" fill="#8a8a93">
+    <text x="340" y="120">WAS · 2024</text>
+    <text x="2060" y="120" text-anchor="end" fill="#b18cff">IS · 2025</text>
+  </g>
+
+  <!-- titles under eyebrow -->
+  <g font-size="22" letter-spacing="1.5" fill="#f4f1ec">
+    <text x="340" y="160">03 SILOED DESIGNERS</text>
+    <text x="2060" y="160" text-anchor="end">09 — STRUCTURED</text>
+  </g>
+
+  <!-- LEFT: fragmented dots -->
+  <g>
+    <g filter="url(#glow)" opacity="0.55">
+      <circle cx="440" cy="280" r="18" fill="#b18cff"/>
+      <circle cx="580" cy="380" r="18" fill="#b18cff"/>
+      <circle cx="400" cy="500" r="18" fill="#b18cff"/>
+    </g>
+    <circle cx="440" cy="280" r="10" fill="#b18cff"/>
+    <circle cx="580" cy="380" r="10" fill="#b18cff"/>
+    <circle cx="400" cy="500" r="10" fill="#b18cff"/>
+
+    <g font-size="11" letter-spacing="2.5" fill="#8a8a93">
+      <text x="470" y="285">01 · VENTURE A</text>
+      <text x="610" y="385">02 · VENTURE B</text>
+      <text x="430" y="505">03 · VENTURE C</text>
+    </g>
+  </g>
+
+  <!-- MIDDLE: flowing curves connecting to leads -->
+  <g stroke="#b18cff" stroke-width="1.1" fill="none" opacity="0.45">
+    <path d="M 440 280 C 900 260, 1400 300, 1740 360" stroke-dasharray="3 5"/>
+    <path d="M 580 380 C 1000 380, 1500 360, 1890 360" stroke-dasharray="3 5"/>
+    <path d="M 400 500 C 900 500, 1500 440, 2040 360" stroke-dasharray="3 5"/>
+  </g>
+
+  <!-- RIGHT: 1 head + 3 leads + 5 ICs (safe x ∈ [340, 2060]) -->
+  <g>
+    <g stroke="#b18cff" stroke-width="1.4" opacity="0.55" fill="none">
+      <line x1="1890" y1="200" x2="1740" y2="360"/>
+      <line x1="1890" y1="200" x2="1890" y2="360"/>
+      <line x1="1890" y1="200" x2="2040" y2="360"/>
+      <line x1="1740" y1="360" x2="1700" y2="520"/>
+      <line x1="1740" y1="360" x2="1800" y2="520"/>
+      <line x1="1890" y1="360" x2="1890" y2="520"/>
+      <line x1="2040" y1="360" x2="1980" y2="520"/>
+      <line x1="2040" y1="360" x2="2060" y2="520"/>
+    </g>
+
+    <g filter="url(#glowSoft)" opacity="0.65">
+      <circle cx="1890" cy="200" r="16" fill="#b18cff"/>
+      <circle cx="1740" cy="360" r="12" fill="#b18cff"/>
+      <circle cx="1890" cy="360" r="12" fill="#b18cff"/>
+      <circle cx="2040" cy="360" r="12" fill="#b18cff"/>
+      <circle cx="1700" cy="520" r="10" fill="#b18cff"/>
+      <circle cx="1800" cy="520" r="10" fill="#b18cff"/>
+      <circle cx="1890" cy="520" r="10" fill="#b18cff"/>
+      <circle cx="1980" cy="520" r="10" fill="#b18cff"/>
+      <circle cx="2060" cy="520" r="10" fill="#b18cff"/>
+    </g>
+
+    <circle cx="1890" cy="200" r="22" fill="none" stroke="#b18cff" stroke-width="1" opacity="0.7"/>
+
+    <circle cx="1890" cy="200" r="12" fill="#b18cff"/>
+    <circle cx="1740" cy="360" r="9" fill="#b18cff"/>
+    <circle cx="1890" cy="360" r="9" fill="#b18cff"/>
+    <circle cx="2040" cy="360" r="9" fill="#b18cff"/>
+    <circle cx="1700" cy="520" r="6" fill="#b18cff"/>
+    <circle cx="1800" cy="520" r="6" fill="#b18cff"/>
+    <circle cx="1890" cy="520" r="6" fill="#b18cff"/>
+    <circle cx="1980" cy="520" r="6" fill="#b18cff"/>
+    <circle cx="2060" cy="520" r="6" fill="#b18cff"/>
+
+    <g font-size="10" letter-spacing="2" fill="#8a8a93">
+      <text x="1890" y="170" text-anchor="middle" fill="#b18cff">HEAD OF DESIGN</text>
+      <text x="1740" y="395" text-anchor="middle">LEAD</text>
+      <text x="1890" y="395" text-anchor="middle">LEAD</text>
+      <text x="2040" y="395" text-anchor="middle">LEAD</text>
+      <text x="1700" y="550" text-anchor="middle">SR</text>
+      <text x="1800" y="550" text-anchor="middle">SR</text>
+      <text x="1890" y="550" text-anchor="middle">MID</text>
+      <text x="1980" y="550" text-anchor="middle">MID</text>
+      <text x="2060" y="550" text-anchor="middle">JR</text>
+    </g>
+  </g>
+
+  <!-- bottom caption row -->
+  <g font-size="12" letter-spacing="2.5" fill="#8a8a93">
+    <text x="340" y="660">12 MONTHS</text>
+    <text x="1200" y="660" text-anchor="middle" fill="#b18cff">FRAGMENTED → STRATEGIC</text>
+    <text x="2060" y="660" text-anchor="end">ICEO · 5 VENTURES</text>
+  </g>
+</svg>
