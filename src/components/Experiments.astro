@@ -2,7 +2,7 @@
 interface Experiment {
   name: string;
   summary: string;
-  status: 'live' | 'beta' | 'building';
+  status: 'live' | 'beta' | 'building' | 'failed';
   url?: string;
   accent: 'cobalt' | 'lime' | 'blue' | 'amber' | 'pink' | 'violet';
   tags?: string[];
@@ -16,51 +16,46 @@ const { variant = 'section' } = Astro.props;
 const experiments: Experiment[] = [
   {
     name: 'Homepage',
-    summary: '[Tim to provide — one-line description of what this is]',
+    summary: 'A quick little dashboard with my calendar, to-do list, WhatsApp shortcuts, Deezer, docs, links and a rotating set of inspirational quotes. Nothing game-changing — but great for personal organising.',
     status: 'live',
-    url: '#',
     accent: 'cobalt',
-    tags: ['Personal', 'AI'],
+    tags: ['Personal', 'Dashboard'],
   },
   {
-    name: 'Prompt Vault',
-    summary: '[Tim to provide — one-line description of what this is]',
+    name: 'Designprompts.space',
+    summary: 'A curated space for Claude skills, prompts, agents and pipelines. A scraper pulls fresh publications weekly; I curate and post them on LinkedIn and the vault itself.',
     status: 'live',
-    url: '#',
     accent: 'lime',
-    tags: ['Prompts', 'Team'],
+    tags: ['Prompts', 'Agents', 'Pipelines'],
   },
   {
     name: 'Design Manifesto',
-    summary: '[Tim to provide — one-line description of what this is]',
+    summary: 'My design philosophy for Randstad, in a nutshell.',
     status: 'live',
-    url: '#',
+    url: 'https://dmp-design-manifesto.netlify.app/',
     accent: 'amber',
     tags: ['Manifesto', 'Principles'],
   },
   {
     name: 'Kintsu',
-    summary: '[Tim to provide — one-line description of what this is]',
-    status: 'beta',
-    url: '#',
+    summary: 'A next-level journaling app for our next of kin — a legacy you can interact with.',
+    status: 'building',
     accent: 'violet',
-    tags: ['Experiment'],
+    tags: ['Journaling', 'Legacy', 'AI'],
   },
   {
     name: 'Vellum',
-    summary: '[Tim to provide — one-line description of what this is]',
-    status: 'beta',
-    url: '#',
+    summary: 'A subscription-based tattoo platform and marketplace.',
+    status: 'building',
     accent: 'pink',
-    tags: ['Experiment'],
+    tags: ['Marketplace', 'Subscription'],
   },
   {
     name: 'Scrapelaar',
-    summary: '[Tim to provide — one-line description of what this is]',
-    status: 'building',
-    url: '#',
+    summary: 'A Funda / real-estate scraper that compares listings at the moment they are placed — to check if a buyer can benefit between agent and platform. POC didn’t pan out.',
+    status: 'failed',
     accent: 'blue',
-    tags: ['Tooling'],
+    tags: ['Scraper', 'Real estate'],
   },
 ];
 
@@ -68,6 +63,7 @@ const statusLabel = {
   live: 'Live',
   beta: 'Beta',
   building: 'Building',
+  failed: 'POC Failed',
 };
 ---
 
@@ -98,7 +94,7 @@ const statusLabel = {
             href={isLink ? e.url : undefined}
             target={isLink ? '_blank' : undefined}
             rel={isLink ? 'noopener' : undefined}
-            class:list={['experiment', { 'is-link': isLink }]}
+            class:list={['experiment', { 'is-link': isLink, 'is-failed': e.status === 'failed' }]}
             style={`--case-color: var(--c-${e.accent});`}
           >
             <header class="experiment-head mono">
@@ -210,6 +206,10 @@ const statusLabel = {
   .experiment.is-link:hover::before { opacity: 0.18; }
   .experiment.is-link:hover .experiment-cta { color: var(--case-color); }
 
+  .experiment.is-failed { opacity: 0.62; }
+  .experiment.is-failed .experiment-name .italic { text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: color-mix(in oklab, var(--case-color) 55%, transparent); }
+  .experiment.is-failed:hover { opacity: 0.95; }
+
   .experiment-head {
     display: flex;
     align-items: center;
@@ -238,9 +238,11 @@ const statusLabel = {
     border-radius: 999px;
     background: var(--muted);
   }
-  .experiment-status.live .status-dot   { background: var(--c-lime); }
-  .experiment-status.beta .status-dot   { background: var(--c-amber); }
-  .experiment-status.building .status-dot { background: var(--muted); }
+  .experiment-status.live .status-dot     { background: var(--c-lime); }
+  .experiment-status.beta .status-dot     { background: var(--c-amber); }
+  .experiment-status.building .status-dot { background: var(--c-cobalt); }
+  .experiment-status.failed .status-dot   { background: var(--c-pink); }
+  .experiment-status.failed { color: var(--c-pink); }
 
   .experiment-name {
     font-family: var(--serif);
