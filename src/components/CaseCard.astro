@@ -147,6 +147,7 @@ const slug = id.replace(/\.mdx$/, '');
     color: var(--fg);
     transition: color 240ms ease;
     text-wrap: balance;
+    overflow-wrap: anywhere;
     z-index: 1;
     font-variation-settings: "opsz" 144, "SOFT" 50;
   }
@@ -225,10 +226,11 @@ const slug = id.replace(/\.mdx$/, '');
 
   @media (max-width: 768px) {
     .card { padding: 16px; }
-    .card-art { padding: 20px; gap: 20px; }
-    .card.featured .card-art { padding: 24px; }
+    .card-art { padding: 20px; gap: 20px; aspect-ratio: auto; min-height: 260px; }
+    .card.featured .card-art { padding: 24px; aspect-ratio: auto; min-height: 280px; }
     .card-art-watermark { font-size: clamp(140px, 38vw, 240px); }
     .card.featured .card-art-watermark { font-size: clamp(180px, 50vw, 320px); }
+    .card.featured .card-art-title { font-size: clamp(36px, 9vw, 56px); }
     .card-foot { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 </style>

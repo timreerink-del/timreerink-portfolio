@@ -145,8 +145,9 @@ const nextSlug = next ? next.id.replace(/\.mdx$/, '') : null;
 
   .case-eyebrow {
     display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    gap: 6px 12px;
     color: var(--muted);
   }
   .case-eyebrow .dot { color: var(--line); }
@@ -198,6 +199,8 @@ const nextSlug = next ? next.id.replace(/\.mdx$/, '') : null;
   }
   @media (max-width: 768px) {
     .case-meta-grid { grid-template-columns: repeat(2, 1fr); }
+    .case-title { font-size: clamp(32px, 9vw, 56px); overflow-wrap: anywhere; }
+    .case-summary { font-size: 16px; }
   }
 
   .case-body {
