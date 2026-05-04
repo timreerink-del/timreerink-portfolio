@@ -9,8 +9,8 @@ body {
   color: var(--fg);
   font-family: var(--serif);
   font-size: var(--t-body);
-  line-height: 1.6;
-  font-variation-settings: "opsz" 24, "SOFT" 50;
+  line-height: 1.55;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -35,13 +35,16 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .serif-display {
   font-family: var(--serif);
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 700;
   line-height: 0.95;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.035em;
 }
 
-.italic { font-style: italic; }
+.italic {
+  font-style: normal;
+  color: var(--case-color);
+  font-weight: 700;
+}
 
 /* --- layout primitives --- */
 .container {

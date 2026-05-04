@@ -18,7 +18,7 @@
   --case-color: var(--c-cobalt);
 
   /* type */
-  --serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --serif: 'Geist Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* scale (fluid) */
