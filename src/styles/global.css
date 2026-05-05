@@ -26,10 +26,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* --- type primitives --- */
 .mono {
-  font-family: var(--mono);
+  font-family: var(--body);
   font-size: var(--t-meta);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   font-weight: 500;
   color: var(--muted);
 }
