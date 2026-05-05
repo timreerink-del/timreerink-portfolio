@@ -17,6 +17,7 @@
     "@astrojs/vercel": "^10.0.6",
     "@fontsource-variable/fraunces": "^5.2.9",
     "@fontsource-variable/geist": "^5.2.8",
+    "@fontsource/hind": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@vercel/analytics": "^2.0.1",
     "astro": "^6.1.10"

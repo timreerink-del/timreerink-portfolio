@@ -1,0 +1,17 @@
+/* Pilcrow Rounded — display, licensed locally (Fontshare FFL) */
+@font-face {
+  font-family: 'Pilcrow Rounded Variable';
+  src: url('/fonts/pilcrow/PilcrowRounded-Variable.woff2') format('woff2-variations'),
+       url('/fonts/pilcrow/PilcrowRounded-Variable.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pilcrow Rounded';
+  src: url('/fonts/pilcrow/PilcrowRounded-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

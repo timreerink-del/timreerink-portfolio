@@ -18,7 +18,8 @@
   --case-color: var(--c-cobalt);
 
   /* type */
-  --serif: 'Geist Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Pilcrow Rounded Variable', 'Pilcrow Rounded', 'Hind', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --body:  'Hind', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* scale (fluid) */
