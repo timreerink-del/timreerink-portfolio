@@ -1,10 +1,10 @@
 :root {
-  /* surface */
-  --bg: #0c0c0e;
-  --bg-2: #141418;
-  --fg: #f3ecd5;
-  --muted: #8a8a93;
-  --line: #26262c;
+  /* surface — warm-neutral spine, lets cool accents (cobalt etc.) pop */
+  --bg: #0d0c0a;
+  --bg-2: #16140f;
+  --fg: #e8e0c8;
+  --muted: #8d877a;
+  --line: #2a261e;
 
   /* signal palette — assigned per case, derived from each case's hero imagery */
   --c-cobalt: #5b78ff;  /* Randstad — featured / global brand accent */
