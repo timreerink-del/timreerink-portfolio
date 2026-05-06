@@ -27,13 +27,11 @@ const skills = [
           loading="lazy"
         />
       </figure>
-      <p class="quote serif-display">
+      <p class="quote">
         <span class="quote-mark" aria-hidden="true">“</span>
-        I lead like
-        <span class="italic accent">Phil Jackson</span>
-        — set the system, build the trust, then get out of the way.
+        I lead like <span class="accent">Phil Jackson</span> — set the system, build the trust, then get out of the way.
       </p>
-      <p class="quote-attr mono">— Personal operating principle</p>
+      <p class="quote-attr mono">— the 11 ring zen master</p>
     </aside>
 
     <div class="about-bio">
@@ -96,24 +94,23 @@ const skills = [
   }
 
   .quote {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 600;
-    font-size: clamp(28px, 3.2vw, 44px);
-    line-height: 1.2;
+    font-family: 'Pally', cursive;
+    font-weight: 400;
+    font-size: clamp(30px, 3.4vw, 46px);
+    line-height: 1.15;
     color: var(--fg);
     margin: 0 0 16px;
     text-wrap: balance;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
   }
   .quote-mark {
-    font-size: 1.6em;
+    font-size: 1.4em;
     color: var(--c-cobalt);
     line-height: 0;
-    vertical-align: -0.2em;
-    margin-right: 4px;
+    vertical-align: -0.25em;
+    margin-right: 2px;
   }
-  .quote .accent { color: var(--c-cobalt); font-weight: 600; }
+  .quote .accent { color: var(--c-cobalt); }
   .quote-attr { color: var(--muted); }
 
   .about-bio { display: grid; gap: 20px; }

@@ -52,6 +52,9 @@ const ogUrl = new URL(ogImage, Astro.site).toString();
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=pally@400&display=swap" />
+
     <meta name="theme-color" content="#0c0c0e" />
   </head>
   <body style={caseColor ? `--case-color: ${caseColor};` : undefined}>
